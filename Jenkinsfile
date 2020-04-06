@@ -1,9 +1,9 @@
 pipeline {
     agent any
     stages {
-        stage('build') {
+        stage('build Docker image') {
             steps {
-                sh 'python --version'
+                sh 'docker build .'
             }
         }
     }
