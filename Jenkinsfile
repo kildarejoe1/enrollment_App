@@ -1,10 +1,10 @@
 pipeline {
     agent any
-    withCredentials( [usernamePassword( credentialsId: 'dockerhub',
-                                      usernameVariable: 'USERNAME',
-                                      passwordVariable: 'PASSWORD')])
     stages {
         stage('build Docker image') {
+            withCredentials( [usernamePassword( credentialsId: 'dockerhub',
+                                          usernameVariable: 'USERNAME',
+                                          passwordVariable: 'PASSWORD')])
             steps {
                 sh 'docker login -u $USERNAME -p $PASSWORD'
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
