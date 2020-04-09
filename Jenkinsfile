@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('build Docker image') {
             steps {
-                sh 'python -m pytest -v'
+                sh 'python -m pytest -v tests/test01.py'
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
                 sh 'docker build -f Dockerfile -t application_enrollment:latest .'
                 sh 'docker push application_enrollment:latest'
